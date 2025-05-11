@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://6tt8ui5pqtxu"]
+
+[ext_resource type="Texture2D" uid="uid://b53ktwj56m8cu" path="res://enemies/cgpt_slime_1.png" id="1_0e4l0"]
+[ext_resource type="Script" uid="uid://bihmc21488fly" path="res://enemies/slimy_boi.gd" id="1_xem1r"]
+[ext_resource type="Script" uid="uid://d1kq3h64orxs5" path="res://enemies/slime_sprite.gd" id="2_xem1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ve2a7"]
+radius = 37.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dom61"]
+radius = 46.1736
+
+[node name="SlimyBoi" type="CharacterBody2D"]
+script = ExtResource("1_xem1r")
+
+[node name="SlimeSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_0e4l0")
+script = ExtResource("2_xem1r")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ve2a7")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_dom61")
