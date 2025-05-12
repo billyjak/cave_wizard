@@ -1,10 +1,25 @@
 extends CharacterBody2D
+class_name SlimyBoi
 
 var health := 3
 var speed := 100
+var slime_strength := 1
 var player_ref = null
-var slime_strength = 1
 
+static func create(
+	player_reference: Node,
+	slime_position: Vector2,
+	health_val: int = 3,
+	speed_val: int = 100,
+	strength_val: int = 1
+) -> SlimyBoi:
+	var slime = preload("res://enemies/slimy_boi.tscn").instantiate()
+	slime.player_ref = player_reference
+	slime.global_position = slime_position
+	slime.health = health_val
+	slime.speed = speed_val
+	slime.slime_strength = strength_val
+	return slime
 
 func _ready():
 	$HitboxArea.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -12,12 +27,10 @@ func _ready():
 
 func take_damage(damage):
 	health -= damage
-	print("slimey boy took damage. health is now: " + str(health))
 	if health <= 0:
 		queue_free()
 
 func _on_body_entered(body):
-	# print("player has entered body")
 	if body.name == "Player":
 		body.take_damage(slime_strength)
 
