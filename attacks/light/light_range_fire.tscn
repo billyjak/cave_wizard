@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcdqweaok700q"]
+
+[ext_resource type="Texture2D" uid="uid://dqg64m3erma53" path="res://sprites/attacks/cgpt_fireball_1.png" id="1_7xe67"]
+[ext_resource type="Script" uid="uid://bc3nccxko07u0" path="res://attacks/light/light_range_fire.gd" id="1_shct8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shct8"]
+radius = 16.4924
+
+[node name="LightRangeFire" type="CharacterBody2D"]
+script = ExtResource("1_shct8")
+
+[node name="FireballRangeSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_7xe67")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_shct8")

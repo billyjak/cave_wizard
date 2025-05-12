@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 200
 const DASH_SPEED = 1000
+const LightRangeFire = preload("res://attacks/light/light_range_fire.tscn")
 const LightMeleeFire = preload("res://attacks/light/light_melee_fire.tscn")
 const SlimyBoi = preload("res://enemies/slimy_boi.tscn")
 
@@ -14,11 +15,16 @@ var last_direction := Vector2.RIGHT
 var last_facing_sprite: Node = null
 var active_slimes := []
 var health := 5
+var hp_label = null
 
 
+func update_hp_label():
+	if hp_label:
+		hp_label.text = "HP: " + str(health)
 
 func take_damage(damage: int):
 	health -= damage
+	update_hp_label()
 	print("player took damage. health is now " + str(health))
 	if health <= 0:
 		queue_free()
@@ -42,9 +48,17 @@ func _ready():
 	add_to_group("players")
 	$SideSprite.visible = true
 	last_facing_sprite = $SideSprite
+	hp_label = get_tree().current_scene.get_node("UI/HPLabel")
+	update_hp_label()
 	
 func _physics_process(_delta: float) -> void:
 
+
+
+	var input_aim_vector = Vector2(
+		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
+		Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+		)
 
 	var input_vector = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
@@ -57,8 +71,10 @@ func _physics_process(_delta: float) -> void:
 		creating_slime = true
 		
 
-		
+
+
 	
+		
 	if Input.is_action_just_pressed("dash") and can_dash and input_vector.length() > 0:
 		is_dashing = true
 		create_timer(0.2, true, true, func(): is_dashing = false)
@@ -77,20 +93,31 @@ func _physics_process(_delta: float) -> void:
 
 	#Creates and set direction and last_direction
 	var direction = input_vector.normalized()
+	var aim_direction = input_aim_vector.normalized()
 	if input_vector.length() > 0:
 		last_direction = direction
 
 
+
+
 	if Input.is_action_just_pressed("attack_light"):
-		var attack = LightMeleeFire.instantiate()
-		if input_vector.length() == 0:
-			attack.global_position = global_position + last_direction * 100
-			attack.rotation = last_direction.angle() + deg_to_rad(270)
+		if input_aim_vector.length() > 0:
+			var attack = LightRangeFire.instantiate()
+			attack.rotation = aim_direction.angle() + deg_to_rad(270)
+			attack.global_position = global_position + aim_direction * 100
+			attack.direction = input_aim_vector.normalized()
 			get_tree().current_scene.add_child(attack)
-			return
-		attack.global_position = global_position + direction * 100
-		attack.rotation = input_vector.angle() + deg_to_rad(270)
-		get_tree().current_scene.add_child(attack)
+
+		else:
+			var attack = LightMeleeFire.instantiate()
+			if input_vector.length() == 0:
+				attack.global_position = global_position + last_direction * 100
+				attack.rotation = last_direction.angle() + deg_to_rad(270)
+				get_tree().current_scene.add_child(attack)
+				return
+			attack.global_position = global_position + direction * 100
+			attack.rotation = input_vector.angle() + deg_to_rad(270)
+			get_tree().current_scene.add_child(attack)
 
 
 
@@ -121,8 +148,6 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	move_and_slide()
-
-
 
 
 
