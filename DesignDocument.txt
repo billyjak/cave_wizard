@@ -1,0 +1,206 @@
+Game Design Document: Rogue-Lite Mage Project
+
+Concept Overview
+
+Genre: 2D Isometric Action Rogue-lite
+Engine: Godot
+Inspiration: Hades, Wizard of Legend, Magicka, Genshin Impact, CrossCode
+
+Setting: A mysterious, ever-shifting cave powered by a time-resetting force that traps the protagonist. An opposing power lets them retain fragments of power between runs, creating a loop of death, growth, and return.
+
+Theme: Magical isolation, mastery through repetition, elemental chaos, and growth despite failure.
+
+Core Gameplay Loop
+
+Enter the cave and fight through randomized rooms
+
+Clear each room by defeating enemies
+
+Collect elemental powers and upgrades
+
+Unlock and use portals or rewards to move to the next room
+
+Die or reach the end of the run
+
+Retain upgrades or unlocks (rogue-lite meta-progression)
+
+Repeat with improved gear, knowledge, and build possibilities
+
+Core Mechanics
+
+Movement
+
+Omni-directional movement (keyboard/controller)
+
+Dash (short cooldown, invincibility frames, can receive buffs to augment its use)
+
+Movement is independent from attack direction (twin-stick style for ranged attacks)
+
+On keyboard & mouse: WASD moves, mouse aims
+
+On controller: left stick moves, right stick aims
+
+For ranged attacks, direction of fire is determined by aim stick or mouse
+
+For melee attacks, player attacks in the direction of movement; however, an option for backward movement while meleeing may be explored, possibly via a toggle or context-sensitive input. CrossCode inspired.
+
+Abilities
+
+Primary Attack: Spammable attack (melee/range strike)
+
+Uses Right Shoulder (RB) on controller
+
+Behavior depends on aim state (ranged if aiming, melee otherwise)
+
+Secondary Attack: Stronger or AoE attack (cooldown or other resource based)
+
+Uses Right Trigger (RT)
+
+Block/Parry/Shield: Defensive mechanic with timing-based activation
+
+Uses Left Trigger (LT)
+
+Dash: Short movement burst, usable as a mobility or positioning tool, also affected by elemental buffs
+
+Uses Left Shoulder (LB)
+
+Aiming Mode: Mouse aim or right stick aim enables ranged attacks
+
+Customization & Elements
+Each ability can be infused with one of the following:
+
+Fire: Burn over time, AoE explosions
+
+Water: Fluid movement, possibly fluid movement (not sure)
+
+Ice: Freeze, control
+
+Electricity: Chain or stun, possibly high speed movement (not sure)
+
+Air: Speed, knockback, disrupting/redirection projectiles
+
+Stone: Armor, crowd control
+
+Elemental Combos (Duo Boons):
+
+Water + Fire = Steam (DoT + accuracy debuff)
+
+Water + Ice = Freeze (immobilize)
+
+Fire + Air = Explosion (high knockback)
+
+Electricity + Water = Arc Surge (chain lightning)
+
+Progression Systems
+
+Meta Progression
+
+Unlock new spells/elements
+
+Permanent stat upgrades (HP, more dashes, revives, probably more)
+
+New room types or enemies
+
+In-Run Progression
+
+Temporary upgrades (like Hades boons)
+
+Elemental synergies discovered dynamically
+
+Choose between ability swaps or upgrades per run
+
+Milestone: Vertical Slice — Complete ✅
+
+Includes:
+
+* Player movement (8-directional)
+* Dash with cooldown
+* Light melee fire attack
+* Ranged fireball with right stick aim (CrossCode-style)
+* Slime enemies that chase and deal damage
+* Slimes can be damaged and die
+* Enemies spawn via timer
+* Player has HP and dies at 0
+* Simple HUD with HP display
+* Codebase modularized (e.g., handle\_movement(), handle\_attack(), slimy\_boi\_spawner())
+
+Current Goal: MVP Gameplay Loop — In Progress 🔄
+
+Room system:
+
+* Each room spawns enemies
+* Tracks enemy defeat
+* Emits "room\_cleared" signal when all enemies die
+* Spawns placeholder reward/portal
+* Player interacts with portal to proceed to next room
+
+Stretch Goals:
+
+Knockback or burn effect
+
+Simple UI for choosing an element
+
+Expand on story
+
+Create characters to interact with between each run/meet during runs
+
+Modular System Architecture (for Code)
+
+Abilities System:
+
+Base Ability class (type, cooldown, damage, element)
+
+Element effect handlers (burn, freeze, etc.)
+
+Slot system for Primary, Secondary, Dash, Defense
+
+Element Interaction System:
+
+Tag-based interaction map (e.g., fire + water = steam)
+
+Effect resolver with visual/audio feedback
+
+Entity System:
+
+Player (state machine, ability manager)
+
+Enemy (basic AI, damage receiver, elemental effects)
+
+Room System:
+
+Procedural or fixed room templates
+
+Door/exit logic for linking rooms
+
+Room.gd to manage per-room logic and emit signals
+
+RoomManager.gd to load/unload rooms and handle transitions
+
+Development Priorities
+
+✅ Movement + dash prototype
+
+✅ Basic enemy AI + hit detection
+
+✅ Implement ability slots with one Fire attack
+
+✅ Add elemental system for abilities
+
+✅ Create first randomized room setup
+
+🔄 Add temporary upgrades within run
+
+🔄 Implement reward/portal system for progressing to next room
+
+Next Steps
+
+Define elemental effect logic (DoT, stun, slow)
+
+Sketch UI for selecting abilities
+
+Decide art strategy: free assets, AI gen placeholders, or abstract icons
+
+Plan visual FX pipeline for elemental effects
+
+Draft example ability script (Godot GDScript)
+
