@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 200
 const DASH_SPEED = 1000
-const LightRangeFire = preload("res://attacks/light/light_range_fire.tscn")
-const LightMeleeFire = preload("res://attacks/light/light_melee_fire.tscn")
+const LightRangeFire = preload("res://attacks/light/LightRangeFire.tscn")
+const LightMeleeFire = preload("res://attacks/light/LightMeleeFire.tscn")
 
 var creating_slime := false
 var is_dashing := false

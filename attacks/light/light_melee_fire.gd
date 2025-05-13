@@ -6,6 +6,7 @@ extends Area2D
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
+
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
