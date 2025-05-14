@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED = 200
 const DASH_SPEED = 1000
@@ -23,21 +24,12 @@ func take_damage(damage: int):
 	health -= damage
 	update_hp_label()
 	if health <= 0:
-		queue_free()
+		call_deferred("queue_free")
 
-func slimy_boi_spawner():
-	if active_slimes.size() == 0 and creating_slime == false:
-		creating_slime = true
-		create_timer(2.0, true, true, func():
-			var slime = SlimyBoi.create(self, get_viewport_rect().size / 2, 3, 100, 1)
-			get_tree().current_scene.add_child(slime)
-			active_slimes.append(slime)
-			slime.connect("tree_exited", Callable(self, "_on_slime_exited").bind(slime))
-		)
-
-func _on_slime_exited(slime):
-	active_slimes.erase(slime)
-	creating_slime = false
+func heal_to_full():
+	health = 5
+	update_hp_label()
+	
 
 func handle_movement(input_direction_vector: Vector2):
 	if is_dashing:
@@ -97,7 +89,6 @@ func handle_sprite(input_direction_vector: Vector2):
 		last_facing_sprite.visible = true
 
 func _ready():
-	add_to_group("players")
 	$SideSprite.visible = true
 	last_facing_sprite = $SideSprite
 	hp_label = get_tree().current_scene.get_node("UI/HPLabel")
@@ -116,7 +107,7 @@ func _physics_process(_delta: float) -> void:
 
 	handle_dash(input_direction_vector)
 	handle_movement(input_direction_vector)
-	slimy_boi_spawner()
+	# slimy_boi_spawner()
 	handle_attack(input_aim_vector, input_direction_vector)
 	handle_sprite(input_direction_vector)
 	move_and_slide()

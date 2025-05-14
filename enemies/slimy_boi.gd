@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name SlimyBoi
 
+signal died(slime: Node)
+
 var health := 3
 var speed := 100
 var slime_strength := 1
@@ -13,7 +15,7 @@ static func create(
 	speed_val: int = 100,
 	strength_val: int = 1
 ) -> SlimyBoi:
-	var slime = preload("res://enemies/slimy_boi.tscn").instantiate()
+	var slime = preload("res://enemies/SlimyBoi.tscn").instantiate()
 	slime.player_ref = player_reference
 	slime.global_position = slime_position
 	slime.health = health_val
@@ -28,6 +30,7 @@ func _ready():
 func take_damage(damage):
 	health -= damage
 	if health <= 0:
+		emit_signal("died", self)
 		queue_free()
 
 func _on_body_entered(body):

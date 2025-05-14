@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyestxxkimxe5"]
+
+[ext_resource type="Script" uid="uid://b2gdlcmp7gu3n" path="res://health_pickup.gd" id="1_lj2ej"]
+[ext_resource type="Texture2D" uid="uid://lsun8raf3o52" path="res://sprites/cgpt_heart.png" id="2_krg1p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cm0pq"]
+radius = 19.0
+
+[node name="HealthPickup" type="Area2D"]
+script = ExtResource("1_lj2ej")
+
+[node name="HitboxArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="HealthSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_krg1p")
