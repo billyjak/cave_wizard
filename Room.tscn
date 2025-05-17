@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://fr1rfqwuju5"]
+[gd_scene load_steps=4 format=3 uid="uid://fr1rfqwuju5"]
 
-[ext_resource type="Script" uid="uid://cbt7skon1vhcf" path="res://room.gd" id="1_88gup"]
+[ext_resource type="Script" uid="uid://btyaneih18yw4" path="res://Room.cs" id="1_gw2vq"]
+[ext_resource type="PackedScene" uid="uid://6tt8ui5pqtxu" path="res://enemies/SlimyBoi.tscn" id="2_u3qo1"]
+[ext_resource type="PackedScene" uid="uid://78xatmaa3jse" path="res://Portal.tscn" id="3_61bxy"]
 
 [node name="Room" type="Node2D"]
-script = ExtResource("1_88gup")
+script = ExtResource("1_gw2vq")
+EnemyScene = ExtResource("2_u3qo1")
+PortalScene = ExtResource("3_61bxy")

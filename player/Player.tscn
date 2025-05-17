@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bon1h81u3xrn0"]
 
-[ext_resource type="Script" uid="uid://cvfcvqyj14os4" path="res://player/player.gd" id="1_xhfnw"]
-[ext_resource type="Texture2D" uid="uid://b3ccdr3ntevun" path="res://sprites/gptwitch2.png" id="2_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://bx83bpko5lk77" path="res://sprites/cgptwitchfacingaway.png" id="3_e80uo"]
+[ext_resource type="Script" uid="uid://belaa7vcvl5o2" path="res://player/Player.cs" id="1_xhfnw"]
+[ext_resource type="Texture2D" uid="uid://ds4rkb8oj21q8" path="res://sprites/gpt_witch_facing_side.png" id="2_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://ctsl183qv0kxy" path="res://sprites/cgpt_witch_facing_away.png" id="3_e80uo"]
 [ext_resource type="Texture2D" uid="uid://bom4ib7hchcpg" path="res://sprites/cgpt_witch_facing_forward.png" id="4_e80uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
