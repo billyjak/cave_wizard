@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://vu85hec75w1s"]
+
+[node name="GoblinFighter" type="CharacterBody2D"]
