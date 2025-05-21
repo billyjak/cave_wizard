@@ -1,43 +1,41 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsldmrhjpfqdg"]
+[gd_scene load_steps=14 format=3 uid="uid://dsldmrhjpfqdg"]
 
 [ext_resource type="Script" uid="uid://byk7tx0mhq3g8" path="res://Player.cs" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://cbid8ybunh6mk" path="res://assets/cgpt_witch_facing_forward.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bmr75dhy6cp50" path="res://assets/leah_sprite_side_run_2.png" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bxewve50138ek" path="res://assets/cgpt_witch_facing_away.png" id="4_272bh"]
+[ext_resource type="Script" uid="uid://bhdosm8xte0i4" path="res://EnemyManager.cs" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bj6lgn3443h1q" path="res://projectile_manager.tscn" id="5_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(45, 77)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(0, 0, 34, 41)
+region = Rect2(8, 6, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(34, 0, 34, 41)
+region = Rect2(40, 6, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(68, 0, 34, 41)
+region = Rect2(72, 6, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(102, 0, 34, 41)
+region = Rect2(104, 6, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(136, 0, 34, 41)
+region = Rect2(136, 6, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
 atlas = ExtResource("3_1bvp3")
-region = Rect2(170, 0, 34, 41)
+region = Rect2(168, 6, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_lquwl")
-}],
+"frames": [],
 "loop": true,
 "name": &"down",
 "speed": 5.0
@@ -87,16 +85,16 @@ shape = SubResource("RectangleShape2D_1bvp3")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5vw27")
 animation = &"side"
+frame_progress = 0.938088
 
 [node name="Room" type="Node2D" parent="."]
 
-[node name="Enemies" type="CharacterBody2D" parent="Room"]
-
 [node name="Walls" type="TileMapLayer" parent="Room"]
 
-[node name="Projectiles" type="Area2D" parent="Room"]
-
-[node name="PlayerSPawn" type="Marker2D" parent="Room"]
+[node name="PlayerSpawn" type="Marker2D" parent="Room"]
 position = Vector2(528, 300)
 
-[node name="EnemySpawns" type="Node2D" parent="Room"]
+[node name="EnemyManager" type="Node2D" parent="Room"]
+script = ExtResource("4_lquwl")
+
+[node name="Projectile Manager" parent="Room" instance=ExtResource("5_7mycd")]
