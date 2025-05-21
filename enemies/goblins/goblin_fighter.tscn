@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://vu85hec75w1s"]
+[gd_scene load_steps=6 format=3 uid="uid://vu85hec75w1s"]
+
+[ext_resource type="Texture2D" uid="uid://d4hixag40rwei" path="res://assets/enemies/goblins/goblin_fighters/cgpt_goblin_fighter_front.png" id="1_o3ekq"]
+[ext_resource type="Script" uid="uid://d2ydx6x8p1crh" path="res://enemies/goblins/GoblinFighter.cs" id="1_pqivc"]
+[ext_resource type="Texture2D" uid="uid://cqhtxig58faib" path="res://assets/enemies/goblins/goblin_fighters/cgpt_goblin_fighter_side.png" id="2_pqivc"]
+[ext_resource type="Texture2D" uid="uid://bf218lvi7x308" path="res://assets/enemies/goblins/goblin_fighters/cgpt_goblin_fighter_back.png" id="3_u6jqd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyvgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o3ekq")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pqivc")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u6jqd")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="GoblinFighter" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_pqivc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yyvgw")
+animation = &"side"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

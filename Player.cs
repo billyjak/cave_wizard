@@ -5,6 +5,7 @@ public partial class Player : CharacterBody2D
 {
 	[Export]
 	public int Speed = 200;
+	SpriteAnimator s = new SpriteAnimator();
 
 	private AnimatedSprite2D anim;
 
@@ -22,11 +23,11 @@ public partial class Player : CharacterBody2D
 
 		Velocity = inputVector * Speed;
 		MoveAndSlide();
+		s.UpdateDirection(Velocity);
 
-		UpdateAnimationDirection(Velocity);
 	}
 
-	private void UpdateAnimationDirection(Vector2 velocity)
+/*	private void UpdateAnimationDirection(Vector2 velocity)
 	{
 		if (velocity.Length() == 0)
 		{
@@ -49,5 +50,5 @@ public partial class Player : CharacterBody2D
 		}
 
 		anim.Play();
-	}
+	}*/
 }
