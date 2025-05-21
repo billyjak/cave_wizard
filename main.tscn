@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dsldmrhjpfqdg"]
+[gd_scene load_steps=28 format=3 uid="uid://dsldmrhjpfqdg"]
 
 [ext_resource type="Script" uid="uid://byk7tx0mhq3g8" path="res://Player.cs" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://drqminvxdo1pd" path="res://assets/run_down.png" id="2_7mycd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://diuisexjnigs8" path="res://assets/run_up.png" id="4_272bh"]
 [ext_resource type="Script" uid="uid://bhdosm8xte0i4" path="res://EnemyManager.cs" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bj6lgn3443h1q" path="res://projectile_manager.tscn" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://c1ugi82xcm8nn" path="res://SpriteAnimator.cs" id="5_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(45, 77)
@@ -156,17 +157,22 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_spriteAnimator")]
 script = ExtResource("1_1bvp3")
+_spriteAnimator = NodePath("SpriteAnimator")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Collisions" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1.5, 9.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="Animations" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5vw27")
-animation = &"up"
+animation = &"side"
+
+[node name="SpriteAnimator" type="Node" parent="Player" node_paths=PackedStringArray("_animatedSprite")]
+script = ExtResource("5_272bh")
+_animatedSprite = NodePath("../Animations")
 
 [node name="Room" type="Node2D" parent="."]
 

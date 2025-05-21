@@ -1,18 +1,11 @@
 using Godot;
-using System;
 
 public partial class Player : CharacterBody2D
 {
 	[Export]
+	private SpriteAnimator _spriteAnimator;
+	[Export]
 	public int Speed = 200;
-	SpriteAnimator s = new SpriteAnimator();
-
-	private AnimatedSprite2D anim;
-
-	public override void _Ready()
-	{
-		anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-	}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -23,32 +16,6 @@ public partial class Player : CharacterBody2D
 
 		Velocity = inputVector * Speed;
 		MoveAndSlide();
-		s.UpdateDirection(Velocity);
-
+		_spriteAnimator?.UpdateDirection(Velocity);
 	}
-
-/*	private void UpdateAnimationDirection(Vector2 velocity)
-	{
-		if (velocity.Length() == 0)
-		{
-			anim.Stop();
-			return;
-		}
-
-		if (Mathf.Abs(velocity.X) > Mathf.Abs(velocity.Y))
-		{
-			anim.Animation = "side";
-			anim.FlipH = velocity.X < 0;
-		}
-		else if (velocity.Y < 0)
-		{
-			anim.Animation = "up";
-		}
-		else
-		{
-			anim.Animation = "down";
-		}
-
-		anim.Play();
-	}*/
 }

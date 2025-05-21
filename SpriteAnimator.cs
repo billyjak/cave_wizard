@@ -1,39 +1,38 @@
 using Godot;
-using System;
 
 public partial class SpriteAnimator : Node
 {
-	private AnimatedSprite2D animatedSprite;
-
-	public override void _Ready()
-	{
-		animatedSprite = GetParent().GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-	}
+	[Export]
+	private AnimatedSprite2D _animatedSprite; // Export to allow setting in the editor
 
 	public void UpdateDirection(Vector2 velocity)
 	{
-		if (animatedSprite == null) return;
+		if (_animatedSprite == null)
+		{
+			GD.PrintErr("AnimatedSprite2D is not assigned in SpriteAnimator!");
+			return;
+		}
 
 		if (velocity.Length() == 0)
 		{
-			animatedSprite.Stop();
+			_animatedSprite.Stop();
 			return;
 		}
 
 		if (Mathf.Abs(velocity.X) > Mathf.Abs(velocity.Y))
 		{
-			animatedSprite.Animation = "side";
-			animatedSprite.FlipH = velocity.X < 0;
+			_animatedSprite.Animation = "side";
+			_animatedSprite.FlipH = velocity.X < 0;
 		}
 		else if (velocity.Y < 0)
 		{
-			animatedSprite.Animation = "up";
+			_animatedSprite.Animation = "up";
 		}
 		else
 		{
-			animatedSprite.Animation = "down";
+			_animatedSprite.Animation = "down";
 		}
 
-		animatedSprite.Play();
+		_animatedSprite.Play();
 	}
 }
