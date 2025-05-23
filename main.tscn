@@ -1,187 +1,26 @@
-[gd_scene load_steps=28 format=3 uid="uid://dsldmrhjpfqdg"]
+[gd_scene load_steps=3 format=3 uid="uid://dsldmrhjpfqdg"]
 
-[ext_resource type="Script" uid="uid://byk7tx0mhq3g8" path="res://Player.cs" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://drqminvxdo1pd" path="res://assets/run_down.png" id="2_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bmr75dhy6cp50" path="res://assets/leah_sprite_side_run_2.png" id="3_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://diuisexjnigs8" path="res://assets/run_up.png" id="4_272bh"]
-[ext_resource type="Script" uid="uid://bhdosm8xte0i4" path="res://EnemyManager.cs" id="4_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bj6lgn3443h1q" path="res://projectile_manager.tscn" id="5_7mycd"]
-[ext_resource type="Script" uid="uid://c1ugi82xcm8nn" path="res://SpriteAnimator.cs" id="5_272bh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(45, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
-atlas = ExtResource("2_7mycd")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(8, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(40, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(72, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(104, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(136, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
-atlas = ExtResource("3_1bvp3")
-region = Rect2(168, 6, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
-atlas = ExtResource("4_272bh")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
-atlas = ExtResource("4_272bh")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
-atlas = ExtResource("4_272bh")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
-atlas = ExtResource("4_272bh")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
-atlas = ExtResource("4_272bh")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
-atlas = ExtResource("4_272bh")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_efxa6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dg77c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ycdy4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w48qg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vivmo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cqfq")
-}],
-"loop": true,
-"name": &"down",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lquwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mycd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_272bh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5vw27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kek77")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c57u")
-}],
-"loop": true,
-"name": &"side",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yaehf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_074og")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cegan")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82xsv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_getpj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ryguw")
-}],
-"loop": true,
-"name": &"up",
-"speed": 12.0
-}]
+[ext_resource type="PackedScene" uid="uid://s5xqcg0ur16g" path="res://scenes/player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bhdosm8xte0i4" path="res://scripts/EnemyManager.cs" id="4_lquwl"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_spriteAnimator")]
-script = ExtResource("1_1bvp3")
-_spriteAnimator = NodePath("SpriteAnimator")
+[node name="Player" parent="." instance=ExtResource("1_0xm2m")]
 
-[node name="Collisions" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1.5, 9.5)
-shape = SubResource("RectangleShape2D_1bvp3")
-
-[node name="Animations" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_5vw27")
-animation = &"side"
-
-[node name="SpriteAnimator" type="Node" parent="Player" node_paths=PackedStringArray("_animatedSprite")]
-script = ExtResource("5_272bh")
-_animatedSprite = NodePath("../Animations")
-
-[node name="Room" type="Node2D" parent="."]
-
-[node name="Walls" type="TileMapLayer" parent="Room"]
-
-[node name="PlayerSpawn" type="Marker2D" parent="Room"]
-position = Vector2(528, 300)
-
-[node name="EnemyManager" type="Node2D" parent="Room"]
+[node name="EnemyManager" type="Node2D" parent="."]
 script = ExtResource("4_lquwl")
 
-[node name="Projectile Manager" parent="Room" instance=ExtResource("5_7mycd")]
+[node name="CurrentRoom" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="CurrentRoom"]
+
+[node name="TileMap" type="TileMap" parent="CurrentRoom"]
+format = 2
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="CurrentRoom"]
+
+[node name="EnemySpawnPoints" type="Node" parent="CurrentRoom"]
+
+[node name="SpawnPoint1" type="Node2D" parent="CurrentRoom/EnemySpawnPoints"]
+
+[node name="SpawnPoint2" type="Node2D" parent="CurrentRoom/EnemySpawnPoints"]

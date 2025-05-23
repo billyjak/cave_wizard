@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://vu85hec75w1s"]
+[gd_scene load_steps=7 format=3 uid="uid://vu85hec75w1s"]
 
 [ext_resource type="Texture2D" uid="uid://d4hixag40rwei" path="res://assets/enemies/goblins/goblin_fighters/cgpt_goblin_fighter_front.png" id="1_o3ekq"]
 [ext_resource type="Script" uid="uid://d2ydx6x8p1crh" path="res://enemies/goblins/GoblinFighter.cs" id="1_pqivc"]
@@ -32,11 +32,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GoblinFighter" type="CharacterBody2D" groups=["Enemies"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqivc"]
+
+[node name="GoblinFighter" type="CharacterBody2D" node_paths=PackedStringArray("_spriteAnimator") groups=["Enemies"]]
 script = ExtResource("1_pqivc")
+_spriteAnimator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yyvgw")
-animation = &"side"
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pqivc")

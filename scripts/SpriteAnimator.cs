@@ -13,26 +13,17 @@ public partial class SpriteAnimator : Node
 			return;
 		}
 
-		if (velocity.Length() == 0)
+		string anim = velocity switch
 		{
-			_animatedSprite.Stop();
-			return;
-		}
+			{ X: 0, Y: 0 } => "idle",
+			{ X: var x, Y: var y } when System.Math.Abs(x) > System.Math.Abs(y) => "side",
+			{ Y: < 0 } => "up",
+			_ => "down"
+		};
 
-		if (Mathf.Abs(velocity.X) > Mathf.Abs(velocity.Y))
-		{
-			_animatedSprite.Animation = "side";
-			_animatedSprite.FlipH = velocity.X < 0;
-		}
-		else if (velocity.Y < 0)
-		{
-			_animatedSprite.Animation = "up";
-		}
-		else
-		{
-			_animatedSprite.Animation = "down";
-		}
-
+		if (anim == "idle") { _animatedSprite.Stop(); return; }
+		_animatedSprite.FlipH = anim == "side" && velocity.X < 0;
+		_animatedSprite.Animation = anim;
 		_animatedSprite.Play();
 	}
 }
