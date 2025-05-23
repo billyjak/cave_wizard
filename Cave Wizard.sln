@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cave Wizard", "Cave Wizard.csproj", "{D11F1000-7C93-48A1-89A6-4891C9E25879}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cave Wizard", "Cave Wizard.csproj", "{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{D11F1000-7C93-48A1-89A6-4891C9E25879}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{4E74EBAC-1FA6-4EEF-A2B7-E92C87A364E6}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

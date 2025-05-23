@@ -15,9 +15,17 @@ run/main_scene="uid://dsldmrhjpfqdg"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelManager="*res://autoloads/LevelManager.cs"
+
 [dotnet]
 
 project/assembly_name="Cave Wizard"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [global_group]
 
